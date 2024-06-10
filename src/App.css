@@ -1,38 +1,204 @@
 .App {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.header {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header h2 {
+  display: inline;
+  background: #d3d3d363;
+  padding: 6px 15px;
+  border-radius: 50px;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header input[type="text"] {
+  border: none;
+  border-bottom: 2px solid;
+  outline: none;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header .score {
+  border: none;
+  border-bottom: 2px solid;
+  outline: none;
+  width: 100px;
+  background: none;
+}
+
+.user-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.instructions {
+  margin-top: 20px;
+}
+
+.questions {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width:768px) {
+  .questions {
+    flex-direction: column;
   }
+}
+
+.question {
+  flex: 0 0 calc(50% - 30px);
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: transform 0
+}
+
+.question p {
+  margin: 0 0 10px 0;
+}
+
+.question ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.question ul li {
+  margin-bottom: 10px;
+}
+
+.question ul li label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.question ul li .custom-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #d3d3d3;
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+}
+
+.question ul li .custom-radio::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: #007bff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s;
+}
+
+.question ul li input[type="radio"] {
+  display: none;
+}
+
+.question ul li input[type="radio"]:checked+.custom-radio::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.question ul li .option-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.question ul li .option-label:hover {
+  background-color: #f0f0f0;
+}
+
+.question ul li .option-text {
+  padding-left: 10px;
+}
+
+.question ul li.option.selected .option-label {
+  background-color: #d9edf7;
+}
+
+.correct {
+  background-color: #d4edda;
+  animation: correctAnimation 0.5s ease-out;
+}
+
+.incorrect {
+  background-color: #f8d7da;
+  animation: incorrectAnimation 0.5s ease-out;
+}
+
+.buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.buttons button {
+  margin: 0 10px;
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.buttons button:hover {
+  background-color: #ddd;
+  transform: scale(1.05);
+}
+
+.score {
+  text-align: center;
+  margin-top: 20px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+footer p {
+  margin: 0;
+}
+
+@keyframes correctAnimation {
+  from {
+    background-color: #ffffff;
+  }
+
   to {
-    transform: rotate(360deg);
+    background-color: #d4edda;
+  }
+}
+
+@keyframes incorrectAnimation {
+  from {
+    background-color: #ffffff;
+  }
+
+  to {
+    background-color: #f8d7da;
   }
 }
